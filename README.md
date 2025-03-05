@@ -109,27 +109,75 @@ You can set these in your shell before running the server.
 
 ### Using with Cursor (AI Code Editor)
 
-[Cursor](https://cursor.com) is an AI-powered code editor that supports MCP integrations. To integrate:
+[Cursor](https://cursor.com) is an AI-powered code editor that supports MCP integrations through its Composer Agent feature. Here's how to set up and use the MongoDB MCP server with Cursor:
+
+#### Adding the MongoDB MCP Server to Cursor
 
 1. **Install Cursor:** Download from [cursor.com/download](https://cursor.com/download).
+
 2. **Configure MCP in Cursor:**
-   - Open Cursor and navigate to **Settings (⚙️) > Extensions > MCP**.
-   - Click **"Add Server"** and configure as follows:
-     - **Name:** `mongodb` (or choose your custom name)
-     - **Command:** `node`
-     - **Arguments:** `/path/to/mongo-mcp/build/index.js`
-     - **Environment Variables:**
+   - Open Cursor and navigate to **Settings (⚙️) > Features > MCP**.
+   - Click on the **"+ Add New MCP Server"** button.
+   - Fill out the form with the following details:
+     - **Name:** `mongodb` (or any name you prefer)
+     - **Type:** Select `stdio` from the dropdown
+     - **Command:** `node /path/to/mongo-mcp/build/index.js`
+     - **Environment Variables:** (Optional) Click "Add Environment Variable" to add:
        - `MONGO_URI`: `mongodb://username:password@hostname:port/database`
        - `DB_NAME`: `yourDatabase`
-3. **Save and Reload:** Click **"Save"** and then either restart Cursor or click **"Reload Servers"**.
-4. **Interact with the Server:**
-   - Open a chat with Claude in Cursor.
-   - Ask questions like:
-     - _"What collections are available in my MongoDB database?"_
-     - _"Can you analyze the schema of my 'users' collection?"_
-     - _"Help me write a query to find all orders with status 'completed' in the last 30 days."_
+   - Click **"Save"** to add the server.
 
-Cursor will automatically map these queries to the MCP tools provided by the server.
+3. **Verify the Server:**
+   - The server should now appear in the list of MCP servers.
+   - You may need to click the refresh button in the top right corner of the MCP server card to populate the tool list.
+   - You should see the MongoDB tools listed under "Available Tools".
+
+#### Project-Specific Configuration (Optional)
+
+You can also configure project-specific MCP servers using a `.cursor/mcp.json` file in your project root:
+
+```json
+{
+  "mcpServers": {
+    "mongodb": {
+      "command": "node",
+      "args": ["/path/to/mongo-mcp/build/index.js"],
+      "env": {
+        "MONGO_URI": "mongodb://username:password@hostname:port/database",
+        "DB_NAME": "yourDatabase"
+      }
+    }
+  }
+}
+```
+
+#### Using MongoDB Tools with Cursor's Agent
+
+1. **Open the Composer:** Click on the Composer tab or use the keyboard shortcut.
+2. **Interact with the Agent:** The Composer Agent will automatically use the MongoDB MCP tools when relevant. You can:
+   - Ask direct questions about your MongoDB data
+   - Request specific analyses or queries
+   - Prompt tool usage by referring to the tool by name or description
+
+3. **Tool Approval:** 
+   - By default, when the Agent wants to use an MCP tool, it will display a message asking for your approval.
+   - You can expand the message to see the tool call arguments before approving.
+   - For advanced users: Enable "Yolo mode" in Cursor settings to allow the Agent to run MCP tools without requiring approval (similar to terminal commands).
+
+4. **View Tool Responses:**
+   - When a tool is used, Cursor will display the response in the chat.
+   - You can expand views of both the tool call arguments and the tool call response.
+
+#### Example Queries in Cursor
+
+```
+What collections are in my MongoDB database?
+Can you analyze the schema of my "users" collection?
+Help me write a query to find all orders with status "completed" in the last 30 days.
+Get the first page of products sorted by price in descending order.
+```
+
+The Agent will automatically map these natural language queries to the appropriate MCP tools provided by the MongoDB server.
 
 ### Using with Claude for Desktop
 
@@ -286,4 +334,4 @@ This project is licensed under the MIT License.
 
 ---
 
-*For more details, refer to the [Model Context Protocol Documentation](https://modelcontextprotocol.io) and the [MCP TypeScript SDK Documentation](https://github.com/modelcontextprotocol/typescript-sdk). Additional references: [MongoDB Cursor Pagination Tutorial](https://www.mongodb.com/blog/post/paging-with-the-bucket-pattern--part-1) and [Mongo Cursor Pagination GitHub](https://github.com/mixmaxhq/mongo-cursor-pagination).*
+*For more details, refer to the [Model Context Protocol Documentation](https://modelcontextprotocol.io) and the [MCP TypeScript SDK Documentation](https://github.com/modelcontextprotocol/typescript-sdk). Additional references: [MongoDB Cursor Pagination Tutorial](https://www.mongodb.com/blog/post/paging-with-the-bucket-pattern--part-1), [Mongo Cursor Pagination GitHub](https://github.com/mixmaxhq/mongo-cursor-pagination), and [Cursor MCP Documentation](https://docs.cursor.com/context/model-context-protocol).*
