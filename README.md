@@ -256,5 +256,5 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 ## Acknowledgments
 
 - [Model Context Protocol](https://modelcontextprotocol.io) - For the MCP specification
-- [Cursor](https://cursor.sh) - For MCP client implementation
-- [MongoDB](https://mongodb.com) - For the database driver 
+- [Cursor](https://docs.cursor.com/context/model-context-protocol) - For MCP client implementation
+- [MongoDB](https://mongodb.com) - For the database driver
