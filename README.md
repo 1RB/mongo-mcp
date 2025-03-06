@@ -2,6 +2,42 @@
 
 A Model Context Protocol (MCP) server that connects to MongoDB and provides tools for interacting with MongoDB collections through Large Language Models like Claude in Cursor.
 
+## Table of Contents
+
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Server](#running-the-server)
+  - [Setting Up in Cursor](#setting-up-in-cursor)
+  - [Tested Environments](#tested-environments)
+- [Using MongoDB Tools in Cursor](#using-mongodb-tools-in-cursor)
+- [Features](#features)
+- [What is MCP?](#what-is-mcp)
+- [Configuration Details](#configuration-details)
+  - [MongoDB Connection String](#mongodb-connection-string)
+  - [Platform-Specific Path Formats](#platform-specific-path-formats)
+  - [TypeScript Configuration](#typescript-configuration)
+- [Available Tools in Detail](#available-tools-in-detail)
+  - [Resources](#resources)
+  - [Tools](#tools)
+  - [Prompts](#prompts)
+- [Project Structure](#project-structure)
+- [Security Considerations](#security-considerations)
+- [Development](#development)
+  - [Making Changes](#making-changes)
+  - [Adding New Tools or Resources](#adding-new-tools-or-resources)
+- [Troubleshooting](#troubleshooting)
+  - [Connection Issues](#connection-issues)
+  - [Path Issues](#path-issues)
+  - [Cursor Integration Issues](#cursor-integration-issues)
+- [Version Compatibility](#version-compatibility)
+- [Coming Soon](#coming-soon)
+  - [Planned Tools](#planned-tools)
+  - [Future Enhancements](#future-enhancements)
+- [License](#license)
+- [Contributing](#contributing)
+- [Acknowledgments](#acknowledgments)
+
 ## Quick Start
 
 ### Prerequisites
