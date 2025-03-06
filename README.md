@@ -13,22 +13,26 @@ A Model Context Protocol (MCP) server that connects to MongoDB and provides tool
 ### Installation
 
 1. Clone this repository:
+
    ```bash
    git clone https://github.com/1rb/mongo-mcp.git
    cd mongo-mcp
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Build the project:
+
    ```bash
    npm run build
    ```
 
 4. Prepare the server script:
+
    ```bash
    # Rename the example script to the working script
    cp mongo-mcp.sh.example mongo-mcp.sh
@@ -40,6 +44,7 @@ A Model Context Protocol (MCP) server that connects to MongoDB and provides tool
 5. Configure your MongoDB connection:
    - Open the `mongo-mcp.sh` file in a text editor
    - Update the MongoDB URI with your actual connection string
+
    ```bash
    # ===== EDIT YOUR MONGODB URI HERE =====
    MONGO_URI="mongodb+srv://username:password@hostname/?retryWrites=true&w=majority"
@@ -51,16 +56,19 @@ A Model Context Protocol (MCP) server that connects to MongoDB and provides tool
 The script will automatically detect your environment (WSL, Git Bash, or native Unix) and run with the appropriate settings:
 
 **Windows with Git Bash:**
+
 ```bash
 bash mongo-mcp.sh
 ```
 
 **Windows with WSL:**
+
 ```bash
 bash mongo-mcp.sh
 ```
 
 **macOS/Linux:**
+
 ```bash
 ./mongo-mcp.sh
 ```
@@ -73,18 +81,19 @@ bash mongo-mcp.sh
 4. Fill in the following details:
    - **Name**: mongo-server (or any name you prefer)
    - **Type**: Command
-   - **Command to run**: `bash /full/path/to/mongo-mcp.sh` 
+   - **Command to run**: `bash /full/path/to/mongo-mcp.sh`
 5. Click "Save"
 6. The MongoDB MCP server should now appear in your MCP servers list
 7. Click the refresh button if the tools don't appear automatically
 
-![Adding MongoDB MCP Server to Cursor](https://i.imgur.com/kBpJNLV.png)
+![Adding MongoDB MCP Server to Cursor](https://i.imgur.com/2rEo23F.png)
 
 *Note: Always use the full absolute path to the script in the Command to run field.*
 
 ### Tested Environments
 
 This MCP server has been successfully tested on:
+
 - Windows 10/11 using Git Bash
 - Windows 10/11 using WSL 2
 - Windows/Cursor integration
@@ -112,13 +121,15 @@ The Model Context Protocol (MCP) is an open protocol that allows LLMs to access 
 ### MongoDB Connection String
 
 Your MongoDB connection string should be in this format:
-```
+
+```text
 mongodb+srv://username:password@hostname/?options
 ```
 
 Replace `username`, `password`, `hostname`, and `options` with your actual MongoDB credentials.
 
 If your MongoDB password contains special characters, make sure to properly URL-encode them:
+
 - `:` becomes `%3A`
 - `/` becomes `%2F`
 - `@` becomes `%40`
@@ -127,17 +138,21 @@ If your MongoDB password contains special characters, make sure to properly URL-
 ### Platform-Specific Path Formats
 
 **Windows with Git Bash:**
-- Use forward slashes in Cursor configuration: `bash C:/Users/username/path/to/mongo-mcp.sh`
+
+- Use `/mnt/c` path format in Cursor configuration: `bash /mnt/c/Users/username/path/to/mongo-mcp.sh`
 
 **Windows with WSL:**
+
 - Use WSL path format in Cursor configuration: `bash /mnt/c/Users/username/path/to/mongo-mcp.sh`
 
 **macOS/Linux:**
+
 - Use standard Unix paths: `bash /path/to/mongo-mcp.sh`
 
 ### TypeScript Configuration
 
 The included `tsconfig.json` is configured for:
+
 - ES2022 target
 - Node16 module format
 - Output to `./build` directory
@@ -171,7 +186,7 @@ The included `tsconfig.json` is configured for:
 
 ## Project Structure
 
-```
+```text
 mongo-mcp/
 ├── build/                         # Compiled JavaScript output
 ├── src/                           # TypeScript source code
