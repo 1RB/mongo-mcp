@@ -76,7 +76,7 @@ bash mongo-mcp.sh
 ### Setting Up in Cursor
 
 1. Open Cursor
-2. Go to Settings → Features → MCP
+2. Go to Settings → MCP
 3. Click on "+ Add New MCP Server"
 4. Fill in the following details:
    - **Name**: mongo-server (or any name you prefer)
