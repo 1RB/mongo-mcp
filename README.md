@@ -70,7 +70,7 @@ chmod +x mongo-mcp-example.sh
 6. The MongoDB MCP server should now appear in your MCP servers list
 7. Click the refresh button if the tools don't appear automatically
 
-![Adding MongoDB MCP Server to Cursor](cursor-mcp-config.png)
+![Adding MongoDB MCP Server to Cursor](https://i.imgur.com/kBpJNLV.png)
 
 *Note: Always use the full absolute path to the script in the Command to run field.*
 
