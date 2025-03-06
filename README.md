@@ -28,8 +28,17 @@ A Model Context Protocol (MCP) server that connects to MongoDB and provides tool
    npm run build
    ```
 
-4. Configure your MongoDB connection:
-   - Open the `mongo-mcp-example.sh` file in a text editor
+4. Prepare the server script:
+   ```bash
+   # Rename the example script to the working script
+   cp mongo-mcp.sh.example mongo-mcp.sh
+   
+   # Make the script executable (Unix systems only)
+   chmod +x mongo-mcp.sh
+   ```
+
+5. Configure your MongoDB connection:
+   - Open the `mongo-mcp.sh` file in a text editor
    - Update the MongoDB URI with your actual connection string
    ```bash
    # ===== EDIT YOUR MONGODB URI HERE =====
@@ -43,18 +52,17 @@ The script will automatically detect your environment (WSL, Git Bash, or native 
 
 **Windows with Git Bash:**
 ```bash
-bash mongo-mcp-example.sh
+bash mongo-mcp.sh
 ```
 
 **Windows with WSL:**
 ```bash
-bash mongo-mcp-example.sh
+bash mongo-mcp.sh
 ```
 
 **macOS/Linux:**
 ```bash
-chmod +x mongo-mcp-example.sh
-./mongo-mcp-example.sh
+./mongo-mcp.sh
 ```
 
 ### Setting Up in Cursor
@@ -65,7 +73,7 @@ chmod +x mongo-mcp-example.sh
 4. Fill in the following details:
    - **Name**: mongo-server (or any name you prefer)
    - **Type**: Command
-   - **Command to run**: `bash /full/path/to/mongo-mcp-example.sh` 
+   - **Command to run**: `bash /full/path/to/mongo-mcp.sh` 
 5. Click "Save"
 6. The MongoDB MCP server should now appear in your MCP servers list
 7. Click the refresh button if the tools don't appear automatically
@@ -119,13 +127,13 @@ If your MongoDB password contains special characters, make sure to properly URL-
 ### Platform-Specific Path Formats
 
 **Windows with Git Bash:**
-- Use forward slashes in Cursor configuration: `bash C:/Users/username/path/to/mongo-mcp-example.sh`
+- Use forward slashes in Cursor configuration: `bash C:/Users/username/path/to/mongo-mcp.sh`
 
 **Windows with WSL:**
-- Use WSL path format in Cursor configuration: `bash /mnt/c/Users/username/path/to/mongo-mcp-example.sh`
+- Use WSL path format in Cursor configuration: `bash /mnt/c/Users/username/path/to/mongo-mcp.sh`
 
 **macOS/Linux:**
-- Use standard Unix paths: `bash /path/to/mongo-mcp-example.sh`
+- Use standard Unix paths: `bash /path/to/mongo-mcp.sh`
 
 ### TypeScript Configuration
 
@@ -169,7 +177,8 @@ mongo-mcp/
 ├── src/                           # TypeScript source code
 │   └── mongodb-mcp-server.ts      # Main server implementation
 ├── .gitignore                     # Git ignore configuration
-├── mongo-mcp-example.sh           # MongoDB MCP server script
+├── mongo-mcp.sh.example           # Example MongoDB MCP server script (template)
+├── mongo-mcp.sh                   # Your working MongoDB MCP server script (gitignored)
 ├── package.json                   # Node.js package configuration
 ├── README.md                      # This file
 └── tsconfig.json                  # TypeScript configuration
@@ -238,6 +247,28 @@ To add new MongoDB tools:
 - MongoDB Driver: v6.14.2+
 - Node.js: v14+ (v16+ recommended)
 - TypeScript: v5.8.2+
+
+## Coming Soon
+
+We're planning to expand this MongoDB MCP server with additional tools and features:
+
+### Planned Tools
+
+- **Collection Statistics**: Quick insights into collection sizes, document counts, and index usage
+- **Index Management**: View existing indexes and get recommendations for improving query performance
+- **Schema Validator**: Examine and suggest MongoDB schema validation rules
+- **Query Explainer**: Analyze and explain MongoDB queries for performance optimization
+- **Data Visualization**: Generate visualizations of query results (histograms, pie charts, etc.)
+
+### Future Enhancements
+
+- **Write Operations**: Safe, permission-controlled write capabilities for data management
+- **Full-Text Search**: Integration with MongoDB Atlas Search for natural language queries
+- **Change Streams**: Real-time monitoring of database changes
+- **Aggregation Builder**: Interactive tool to construct complex aggregation pipelines
+- **Geospatial Queries**: Support for location-based queries and visualizations
+
+Interested in contributing to these features? Feel free to open an issue or submit a pull request!
 
 ## License
 

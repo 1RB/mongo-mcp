@@ -51,3 +51,6 @@ tmp/
 temp/
 *MCP*.md
 start*
+
+# Working script with real credentials
+mongo-mcp.sh
