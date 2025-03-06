@@ -1,0 +1,28 @@
+{
+  "name": "mongo-mcp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').renameSync('build/mongodb-mcp-server.js', 'build/index.js')\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1RB/mongo-mcp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1RB/mongo-mcp/issues"
+  },
+  "homepage": "https://github.com/1RB/mongo-mcp#readme",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.6.1",
+    "@types/node": "^22.13.9",
+    "mongodb": "^6.14.2",
+    "typescript": "^5.8.2",
+    "zod": "^3.24.2"
+  }
+}
