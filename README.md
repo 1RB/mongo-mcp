@@ -2,7 +2,8 @@
 
 [![Node.js 18+](https://img.shields.io/badge/node-18%2B-blue.svg)](https://nodejs.org/en/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![smithery badge](https://smithery.ai/badge/mongodb-mcp-server)](https://smithery.ai/server/mongodb-mcp-server)
+[![npm version](https://badge.fury.io/js/%40coderay%2Fmongo-mcp-server.svg)](https://www.npmjs.com/package/@coderay/mongo-mcp-server)
+[![smithery badge](https://smithery.ai/badge/mongo-mcp)](https://smithery.ai/server/mongo-mcp)
 
 A Model Context Protocol (MCP) server that enables LLMs to interact directly with MongoDB databases. Query collections, inspect schemas, and manage data seamlessly through natural language.
 
@@ -24,6 +25,21 @@ Key benefits of MCP:
 - 📊 Document querying and filtering
 - 📈 Index management
 - 📝 Document operations (insert, update, delete)
+- 🔒 Secure database access through connection strings
+- 📋 Comprehensive error handling and validation
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have:
+
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- [MongoDB](https://www.mongodb.com/) instance (local or remote)
+- An MCP client like [Claude Desktop](https://claude.ai/download) or [Cursor.ai](https://cursor.sh/)
+
+You can verify your Node.js installation by running:
+```bash
+node --version  # Should show v18.0.0 or higher
+```
 
 ## 🚀 Quick Start
 
@@ -66,13 +82,6 @@ To use MongoDB MCP with Cursor.ai:
    - **Args**: `mongo-mcp mongodb://<username>:<password>@<host>:<port>/<database>?authSource=admin`
 
 *Note: Cursor currently supports MCP tools only in the Agent in Composer feature.*
-
-### Prerequisites
-
-- Node.js 18+
-- npx
-- Docker and Docker Compose (for local sandbox testing only)
-- MCP Client (Claude Desktop App or Cursor.ai)
 
 ### Test Sandbox Setup
 
@@ -217,6 +226,19 @@ npm run dev
 npm test
 ```
 
+## 🔒 Security Considerations
+
+When using this MCP server with your MongoDB database:
+
+1. **Create a dedicated MongoDB user** with minimal permissions needed for your use case
+2. **Never use admin credentials** in production environments
+3. **Enable access logging** for audit purposes
+4. **Set appropriate read/write permissions** on collections
+5. **Use connection string parameters** to restrict access (e.g., `readPreference=secondary`)
+6. **Consider IP allow-listing** to restrict database access
+
+⚠️ **IMPORTANT**: Always follow the principle of least privilege when configuring database access.
+
 ## 🌐 How It Works
 
 The MongoDB MCP server:
@@ -237,6 +259,39 @@ You can deploy this MCP server in several ways:
 - As a global npm package: `npm install -g @coderay/mongo-mcp-server`
 - In a Docker container (see Dockerfile in the repository)
 - As a service on platforms like Heroku, Vercel, or AWS
+
+## ❓ Troubleshooting
+
+### Common Issues
+
+1. **Connection Errors**
+   - Verify your MongoDB connection string is correct
+   - Check that your MongoDB server is running and accessible
+   - Ensure network permissions allow the connection
+
+2. **Authentication Issues**
+   - Confirm username and password are correct
+   - Verify the authentication database is specified (usually `authSource=admin`)
+   - Check if MongoDB requires TLS/SSL connections
+
+3. **Tool Execution Problems**
+   - Restart Claude Desktop or Cursor.ai completely
+   - Check the logs for detailed error messages:
+     ```bash
+     # macOS
+     tail -n 20 -f ~/Library/Logs/Claude/mcp*.log
+     ```
+
+4. **Performance Issues**
+   - Consider adding appropriate indexes to frequently queried fields
+   - Use projection to limit the data returned in queries
+   - Use limit and skip parameters for pagination
+
+### Getting Help
+
+If you encounter issues:
+- Review the [MCP Documentation](https://modelcontextprotocol.io)
+- Submit an issue on our [GitHub repository](https://github.com/1rb/mongo-mcp/issues)
 
 ## 🤝 Contributing
 
