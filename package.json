@@ -1,5 +1,5 @@
 {
-  "name": "@coderay/mongo-mcp-server",
+  "name": "@coderay/mongodb-mcp-server",
   "version": "1.0.2",
   "description": "High-performance MongoDB Model Context Protocol (MCP) server optimized for LLMs - enables AI agents to safely and efficiently query and manipulate MongoDB data with type safety, schema validation, and controlled access patterns",
   "type": "module",
